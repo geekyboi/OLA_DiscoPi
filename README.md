@@ -22,5 +22,11 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main
 dmx/.venv/bin/python3 dmx/test.py
 ```
 
+## OLA
+- OLA can be accessed at port 9090
+```bash
+http://pi.local:9090
+```
+
 ## License
 MIT license
