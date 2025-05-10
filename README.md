@@ -16,6 +16,11 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main
 ## Python
 - Test.py runs a sequence of colours through 4 8 channel par lights at addresses (1, 8, 16, 24)
 - The speed can be controlled by entering a bpm when the script is running
+- You need to run it with the .venv created in setup e.g.
+
+```bash
+dmx/.venv/bin/python3 dmx/test.py
+```
 
 ## License
 MIT license
