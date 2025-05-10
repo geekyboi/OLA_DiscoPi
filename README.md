@@ -1,14 +1,10 @@
-
-
-
-
 # OLA_DiscoPi
 Ola installation for a UART disco.
 This script automates the installation of OLA (Open Lighting Architecture) on Raspberry Pi or compatible systems.
 
 ## Installation
 ```bash
-curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/raw/master/install_ola.sh | bash
+curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main/OLA_Install.sh | bash
 ```
 
 ## Notes:
