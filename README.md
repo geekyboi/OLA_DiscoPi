@@ -13,4 +13,4 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main
 - A reboot is required after running the script to apply changes.
 
 ## License
-[Your license here]
+MIT license
