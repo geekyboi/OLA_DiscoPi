@@ -3,6 +3,7 @@ Description=Open Lighting Architecture (OLA) Daemon
 After=network.target
 
 [Service]
+ExecStartPre=/usr/bin/pinctrl 17,27 op dh
 ExecStart=/usr/local/bin/olad -l 3
 Restart=always
 RestartSec=5
