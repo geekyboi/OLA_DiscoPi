@@ -1,0 +1,17 @@
+[Unit]
+Description=Open Lighting Architecture (OLA) Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/olad -l 3
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+StartLimitBurst=0
+User=pi
+Group=pi
+Environment=PATH=/usr/local/bin:$PATH
+WorkingDirectory=/home/pi
+
+[Install]
+WantedBy=multi-user.target
