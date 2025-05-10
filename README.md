@@ -8,7 +8,7 @@ This script automates the installation of OLA (Open Lighting Architecture) on Ra
 
 ## Installation
 ```bash
-curl -sSL https://github.com/yourusername/your-repo/raw/master/install_ola.sh | bas
+curl -sSL https://github.com/yourusername/your-repo/raw/master/install_ola.sh | bash
 ```
 
 ## Notes:
