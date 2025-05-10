@@ -8,8 +8,8 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main
 ```
 
 ## Notes:
-- The script assumes you're running a Debian-based OS (e.g., Raspberry Pi OS).
-- You will need `sudo` privileges to install some dependencies.
+- The script has been tested successfully on a Pi3
+- The UART TTL module connected to pins 14/15 for the DMX output
 - A reboot is required after running the script to apply changes.
 
 ## License
