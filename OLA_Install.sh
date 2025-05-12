@@ -2,6 +2,10 @@
 echo "🏁 Start OLA install..."
 set -e
 
+# Update system
+echo "📬 Updating system..."
+sudo apt-get update && sudo apt-get upgrade -y
+
 # Set up working directory
 echo "🗂️ Creating working directory..."
 mkdir -p dmx
@@ -15,10 +19,6 @@ python3 -m venv .venv
 DMX_DIR="$(pwd)"
 export PATH="$DMX_DIR/.venv/bin:$PATH"
 export PYTHONPATH="$PYTHONPATH:$DMX_DIR/.venv/bin"
-
-# Update system
-echo "📬 Updating system..."
-sudo apt-get update && sudo apt-get upgrade -y
 
 # Install Core tools
 echo "🔨 Installing core tools..."
