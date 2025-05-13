@@ -36,9 +36,9 @@ sudo apt-get install -y \
 
 # Install Python packages in your venv
 printf "\n\n🐍 Installing Python dependencies..."
-python3 -m pip cache purge
-python3 -m pip install --upgrade pip
-python3 -m pip install gcovr cpplint protobuf numpy
+"$PYTHONPATH/python3" -m pip cache purge
+"$PYTHONPATH/python3" -m pip install --upgrade pip
+"$PYTHONPATH/python3" -m pip install gcovr cpplint protobuf numpy
 
 # Update shared library cache
 printf "\n\n📚 Updating shared libraries..."
