@@ -12,7 +12,7 @@ mkdir -p dmx
 cd dmx
 
 # create python venv
-echo "🐍 Creating up Python virtual enviroment..."
+echo "🐍 Creating Python virtual enviroment..."
 python3 -m venv .venv
 
 # Set virtualenv as Python PATH
