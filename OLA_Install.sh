@@ -36,9 +36,10 @@ sudo apt-get install -y \
 
 # Install Python packages in your venv
 printf "\n\n🐍 Installing Python dependencies..."
-"$PATH/python" -m pip cache purge
-"$PATH/python" -m pip install --upgrade pip
-"$PATH/python" -m pip install --prefer-binary gcovr cpplint protobuf numpy
+Python_Venv="$DMX_DIR/.venv/bin/python"
+"$Python_Venv" -m pip cache purge
+"$Python_Venv" -m pip install --upgrade pip
+"$Python_Venv" -m pip install --prefer-binary gcovr cpplint protobuf numpy
 
 # Update shared library cache
 printf "\n\n📚 Updating shared libraries..."
