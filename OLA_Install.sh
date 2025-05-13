@@ -37,9 +37,9 @@ sudo apt-get install -y libcppunit-dev libcppunit-1.15-0 uuid-dev pkg-config \
 # Install Python packages in your venv
 printf "\n\n🐍 Installing Python dependencies..."
 Python_Venv="$DMX_DIR/.venv/bin/python"
-"$Python_Venv" -m pip cache purge
-"$Python_Venv" -m pip install --upgrade pip
-"$Python_Venv" -m pip install --prefer-binary gcovr cpplint protobuf numpy
+"$DMX_DIR/.venv/bin/python" -m pip cache purge
+"$DMX_DIR/.venv/bin/python" -m pip install --upgrade pip
+"$DMX_DIR/.venv/bin/python" -m pip install --prefer-binary gcovr cpplint protobuf numpy
 
 # Update shared library cache
 printf "\n\n📚 Updating shared libraries..."
@@ -115,7 +115,7 @@ echo "Confirming OLA service is running..."
 systemctl is-active --quiet ola.service && echo "✅ OLA is running." || echo "❌ OLA failed to start."
 
 # Completed
-eprintf "\n\n🥳 OLA Compiled and Installed."
+printf "\n\n🥳 OLA Compiled and Installed."
 echo "🎉 UART Settings Updated to enable DMX."
 echo "🍾 OLA Service on Start Up Enabled.\n\n\n"
 read -p "🪄 Reboot now to apply changes? [y/N] " choice 
