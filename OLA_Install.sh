@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-printf "\n\n🏁 Start OLA install..."
 set -e
+
+printf "\n\n🏁 Start OLA install..."
+printf "This is going to take a while..............."
 
 # Update system
 printf "\n\n📬 Updating system..."
