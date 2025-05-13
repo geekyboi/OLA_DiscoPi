@@ -52,7 +52,7 @@ export CXX="ccache g++"
 # Download ola
 printf "\n\n🔗 Cloning OLA repository..."
 [ -d "ola" ] || git clone https://github.com/OpenLightingProject/ola.git ola
-cd ola
+cd "$DMX_DIR/ola"
 
 # Bootstrap build system
 printf "\n\n🔨 Bootstrapping the build system..."
@@ -118,5 +118,5 @@ systemctl is-active --quiet ola.service && echo "✅ OLA is running." || echo "�
 printf "\n\n🥳 OLA Compiled and Installed."
 echo "🎉 UART Settings Updated to enable DMX."
 echo "🍾 OLA Service on Start Up Enabled.\n\n\n"
-read -p "🪄 Reboot now to apply changes? [y/N] " choice 
+read -r -p "🪄 Reboot now to apply changes? [y/N] " choice 
 [[ "$choice" =~ ^[Yy]$ ]] && sudo reboot
