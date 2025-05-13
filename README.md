@@ -5,7 +5,7 @@ It's been created to allow uart control of dmx lights through python with a OLA
 
 ## Installation
 ```bash
-curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main/OLA_Install.sh | bash
+curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/OLA_Install.sh | bash
 ```
 
 ## Notes:
