@@ -38,7 +38,7 @@ sudo apt-get install -y \
 printf "\n\n🐍 Installing Python dependencies..."
 "$PYTHONPATH" -m pip cache purge
 "$PYTHONPATH" -m pip install --upgrade pip
-"$PYTHONPATH" -m pip install gcovr cpplint protobuf numpy
+"$PYTHONPATH" -m pip install --prefer-binary gcovr cpplint protobuf numpy
 
 # Update shared library cache
 printf "\n\n📚 Updating shared libraries..."
