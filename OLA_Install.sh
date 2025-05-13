@@ -28,10 +28,10 @@ sudo apt-get install -y wget curl supervisor git build-essential ccache make
 
 # Install required dependencies for OLA
 printf "\n\n📦 Installing required dependencies for OLA..."
-sudo apt-get install -y libcppunit-dev libcppunit-1.15-0 uuid-dev pkg-config /
- libncurses5-dev libtool autoconf automake  g++ libmicrohttpd-dev  /
- libmicrohttpd12 protobuf-compiler libprotobuf-lite32 libprotobuf-dev /
- libprotoc-dev zlib1g-dev bison flex make libftdi-dev libftdi1 libusb-1.0-0-dev /
+sudo apt-get install -y libcppunit-dev libcppunit-1.15-0 uuid-dev pkg-config \
+ libncurses5-dev libtool autoconf automake  g++ libmicrohttpd-dev  \
+ libmicrohttpd12 protobuf-compiler libprotobuf-lite32 libprotobuf-dev \
+ libprotoc-dev zlib1g-dev bison flex make libftdi-dev libftdi1 libusb-1.0-0-dev \
  liblo-dev libavahi-client-dev doxygen graphviz flake8
 
 # Install Python packages in your venv
