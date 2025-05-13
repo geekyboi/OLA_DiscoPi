@@ -18,7 +18,7 @@ python3 -m venv .venv
 # Set virtualenv as Python PATH
 DMX_DIR="$(pwd)"
 export PATH="$DMX_DIR/.venv/bin:$PATH"
-export PYTHONPATH="$PYTHONPATH:$DMX_DIR/.venv/bin/python"
+export PYTHONPATH="$PYTHONPATH:$DMX_DIR/.venv/bin/"
 
 # Install Core tools
 printf "\n\n🔨 Installing core tools..."
@@ -36,9 +36,9 @@ sudo apt-get install -y \
 
 # Install Python packages in your venv
 printf "\n\n🐍 Installing Python dependencies..."
-"$PYTHONPATH" -m pip cache purge
-"$PYTHONPATH" -m pip install --upgrade pip
-"$PYTHONPATH" -m pip install --prefer-binary gcovr cpplint protobuf numpy
+"$PATH/python" -m pip cache purge
+"$PATH/python" -m pip install --upgrade pip
+"$PATH/python" -m pip install --prefer-binary gcovr cpplint protobuf numpy
 
 # Update shared library cache
 printf "\n\n📚 Updating shared libraries..."
