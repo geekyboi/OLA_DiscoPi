@@ -100,6 +100,13 @@ sudo sed -i 's/[ ]*console=serial0,115200[ ]*//g' "$CMDLINE_FILE"
 sudo sed -i 's/  */ /g' "$CMDLINE_FILE"
 sudo sed -i 's/^ *//;s/ *$//' "$CMDLINE_FILE"
 
+# Configure OLA UART plugin
+UART_Config="/home/pi/.ola/ola-uartdmx.conf"
+curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola-uartdmx.conf -o ola-uartdmx.conf
+sudo rm "$UART_Config"
+sudo cp ola-uartdmx.conf /home/pi/.ola/ola-uartdmx.conf
+sudo rm ola-uartdmx.conf
+
 # Download ola.service from GitHub
 printf "\n\n📥 Downloading ola.service..."
 curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola.service -o ola.service
