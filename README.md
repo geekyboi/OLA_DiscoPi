@@ -1,7 +1,7 @@
 # OLA_DiscoPi
 Ola installation for a UART disco.
-This script automates the installation of OLA (Open Lighting Architecture) on Raspberry Pi or compatible systems.
-It's been created to allow uart control of dmx lights through python with a OLA
+This script automates the installation of OLA (Open Lighting Architecture) on Raspberry Pi with python enabled.
+It's been created to allow uart control of dmx lights with a python based controller
 
 ## Installation
 ```bash
