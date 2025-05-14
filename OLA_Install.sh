@@ -102,7 +102,7 @@ sudo sed -i 's/^ *//;s/ *$//' "$CMDLINE_FILE"
 
 # Download ola.service from GitHub
 printf "\n\n📥 Downloading ola.service..."
-curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/refs/heads/main/ola.service -o ola.service
+curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola.service -o ola.service
 
 # Copy OLA service to startup
 printf "\n\n💡 Enabling OLA service on boot..."
