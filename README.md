@@ -10,7 +10,7 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/OLA_Instal
 ```
 ### Step 2
 ```bash
-curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/OLA_Install_1.sh | bash
+curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/OLA_Install_2.sh | bash
 ```
 
 ## Notes:
