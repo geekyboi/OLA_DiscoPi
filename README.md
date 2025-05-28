@@ -14,7 +14,7 @@ curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/OLA_Instal
 ```
 
 ## Notes:
-- The script has been tested successfully on a Pi3
+- The script has been tested successfully on a Pi3 and Pi5
 - The UART TTL module connected to pins 14/15 for the DMX output
 - A reboot is required midway through and after running the script to apply changes.
 
