@@ -106,7 +106,25 @@ if curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola-uar
     sudo cp ola-uartdmx.conf "$UART_Config"
     rm ola-uartdmx.conf
 else
-    echo "❌ Download failed. Configuration not updated."
+    echo "❌ Download failed. Uart configuration not updated."
+fi
+
+# Configure OLA Universe Creation
+UART_Config="/home/pi/.ola/ola-universe.conf"
+if curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola-universe.conf -o ola-universe.conf; then
+    sudo cp ola-universe.conf "$UART_Config"
+    rm ola-uartdmx.conf
+else
+    echo "❌ Download failed. Universe not created."
+fi
+
+# Configure OLA Universe Port
+UART_Config="/home/pi/.ola/ola-port.conf"
+if curl -sSL https://raw.githubusercontent.com/geekyboi/OLA_DiscoPi/main/ola-port.conf -o ola-port.conf; then
+    sudo cp ola-port.conf "$UART_Config"
+    rm ola-uartdmx.conf
+else
+    echo "❌ Download failed. Port not configured."
 fi
 
 # Download ola.service from GitHub
