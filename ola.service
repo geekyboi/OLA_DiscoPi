@@ -1,18 +1,18 @@
 [Unit]
 Description=Open Lighting Architecture (OLA) Daemon
 After=network.target
+# Keep retrying forever, e.g. if the UART is slow to appear
+StartLimitIntervalSec=0
 
 [Service]
-ExecStartPre=/usr/bin/pinctrl 17,27 op dh
-ExecStart=/usr/local/bin/olad -l 3
+# Switch on wired (GPIO 17) and wireless (GPIO 27) DMX. "+" runs this as root.
+ExecStartPre=+/usr/bin/pinctrl 17,27 op dh
+ExecStart=/usr/bin/olad --config-dir /etc/ola -l 3
 Restart=always
 RestartSec=5
-StartLimitIntervalSec=0
-StartLimitBurst=0
-User=pi
-Group=pi
-Environment=PATH=/usr/local/bin:$PATH
-WorkingDirectory=/home/pi
+User=olad
+Group=olad
+SupplementaryGroups=dialout
 
 [Install]
 WantedBy=multi-user.target
