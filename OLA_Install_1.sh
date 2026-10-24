@@ -76,26 +76,46 @@ printf "\n\n📊 ccache stats:.\n"
 ccache -s
 
 # Configure UART for DMX output
-CONFIG_FILE="/boot/firmware/config.txt"
-CMDLINE_FILE="/boot/cmdline.txt"
+# Bookworm and later keep the boot files in /boot/firmware, older releases in /boot
+if [ -f /boot/firmware/config.txt ]; then
+  BOOT_DIR="/boot/firmware"
+else
+  BOOT_DIR="/boot"
+fi
+CONFIG_FILE="$BOOT_DIR/config.txt"
+CMDLINE_FILE="$BOOT_DIR/cmdline.txt"
 
 # Update config.txt to enable UART at DMX baud rate
-printf "\n\n🧹 Cleaning old UART entries in config.txt....\n"
+printf "\n\n🧹 Cleaning old UART entries in %s....\n" "$CONFIG_FILE"
+sudo sed -i '/^# >>> OLA_DiscoPi/,/^# <<< OLA_DiscoPi/d' "$CONFIG_FILE"
 sudo sed -i '/^enable_uart=/d' "$CONFIG_FILE"
 sudo sed -i '/^init_uart_clock=/d' "$CONFIG_FILE"
 sudo sed -i '/^dtoverlay=pi3-disable-bt/d' "$CONFIG_FILE"
 echo "📝 Adding new entries config.txt..."
 {
   echo ""
+  echo "# >>> OLA_DiscoPi UART DMX (managed by OLA_Install_1.sh)"
   echo "[all]"
   echo "enable_uart=1"
+  echo "# Pi 3/4: give the full PL011 UART (ttyAMA0) to GPIO 14/15 by disabling Bluetooth"
+  echo "[pi3]"
+  echo "dtoverlay=disable-bt"
   echo "init_uart_clock=16000000"
-  echo "dtoverlay=pi3-disable-bt"
+  echo "[pi4]"
+  echo "dtoverlay=disable-bt"
+  echo "# Pi 5: Bluetooth has its own UART, so just enable UART0 (ttyAMA0) on GPIO 14/15"
+  echo "[pi5]"
+  echo "dtparam=uart0=on"
+  echo "[all]"
+  echo "# <<< OLA_DiscoPi"
 } | sudo tee -a "$CONFIG_FILE" > /dev/null
 
-# Remove console=serial0,115200 from cmdline.txt
-printf "\n\n📝 Modifying /boot/cmdline.txt....\n"
-sudo sed -i 's/[ ]*console=serial0,115200[ ]*//g' "$CMDLINE_FILE"
+# Bluetooth no longer has a UART on the Pi 3/4, so stop it trying to use one
+sudo systemctl disable hciuart 2>/dev/null || true
+
+# Remove the serial console so it doesn't write over the DMX output
+printf "\n\n📝 Modifying %s....\n" "$CMDLINE_FILE"
+sudo sed -i -E 's/[ ]*console=(serial0|ttyAMA0|ttyS0),[0-9]+[ ]*/ /g' "$CMDLINE_FILE"
 # Optional: Clean up double or leading/trailing spaces
 sudo sed -i 's/  */ /g' "$CMDLINE_FILE"
 sudo sed -i 's/^ *//;s/ *$//' "$CMDLINE_FILE"
