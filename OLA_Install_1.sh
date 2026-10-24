@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
+# Run as your normal user: the script uses sudo itself where it needs root
+if [ "$(id -u)" -eq 0 ]; then
+  echo "❌ Please run this as your normal user, not with sudo or as root."
+  exit 1
+fi
+
 printf "\n\n🏁 Start Step 1 OLA install....\n"
 printf "This is going to take a while................\n"
 
@@ -10,8 +16,11 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Set up working directory
 printf "\n\n🗂️ Creating working directory....\n"
-mkdir -p dmx
-cd dmx
+mkdir -p "$HOME/dmx"
+# Earlier versions built OLA with sudo, leaving root-owned files behind
+sudo chown -R "$USER:$(id -gn)" "$HOME/dmx"
+[ -d "$HOME/.ccache" ] && sudo chown -R "$USER:$(id -gn)" "$HOME/.ccache"
+cd "$HOME/dmx"
 
 # create python venv
 printf "\n\n🐍 Creating Python virtual enviroment....\n"
@@ -67,9 +76,12 @@ printf "\n\n⚙️ Configuring OLA build....\n"
 
 # Build & install OLA
 printf "\n\n🏗️ Building OLA.\n"
-sudo make -j "$(nproc)"
+make -j "$(nproc)"
 sudo make install
 sudo ldconfig
+
+# Let this user use the UART and GPIO pins without root
+sudo usermod -aG dialout,gpio "$USER"
 
 # Show ccache stats
 printf "\n\n📊 ccache stats:.\n"
